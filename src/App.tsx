@@ -89,14 +89,16 @@ function App() {
         max={18}
         step={1}
       />
-      <Strength/>
-
+{/* 
+      <Strength onChange={handleRatioChange}/>
+*/}
       <Input
         type="number"
         label={`drink mass (g)`}
         name="ratio"
         value={volume}
         onChange={handleVolumeChange}
+        max={800}
       />
 
       <dl>

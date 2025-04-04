@@ -1,22 +1,30 @@
-function Strength() {
+import { ChangeEvent, FC } from 'react'
+
+interface StrengthProps {
+    onChange: (e: ChangeEvent<HTMLInputElement>) => void
+}
+
+const Strength: FC<StrengthProps> = ({
+  onChange,
+}) => {
     return (
         <div>
             <fieldset>
                 <legend>Strength</legend>
-                <label>                    
-                    <input type="radio" name="strength" value={18}/>weak
+                <label style={{backgroundColor: 'hsl(19deg, 71.6%, 18%)', color: '#FFF'}}>
+                    <input type="radio" name="strength" value={18} onChange={onChange}/>weak
                 </label>
-                <label>                    
-                    <input type="radio" name="strength" value={17}/>mild
+                <label style={{backgroundColor: 'hsl(19deg, 71.6%, 17%)', color: '#FFF'}}>
+                    <input type="radio" name="strength" value={17} onChange={onChange}/>mild
                 </label>
-                <label>                    
-                    <input type="radio" name="strength" value={16}/>average
+                <label style={{backgroundColor: 'hsl(19deg, 71.6%, 16%)', color: '#FFF'}}>
+                    <input type="radio" name="strength" value={16} onChange={onChange}/>average
                 </label>
-                <label>                    
-                    <input type="radio" name="strength" value={15}/>strong
+                <label style={{backgroundColor: 'hsl(19deg, 71.6%, 15%)', color: '#FFF'}}>
+                    <input type="radio" name="strength" value={15} onChange={onChange}/>strong
                 </label>
-                <label>                    
-                    <input type="radio" name="strength" value={14}/>robust
+                <label style={{backgroundColor: 'hsl(19deg, 71.6%, 14%)', color: '#FFF'}}>
+                    <input type="radio" name="strength" value={14} onChange={onChange}/>robust
                 </label>
             </fieldset>
         </div>

@@ -16,7 +16,7 @@ const Instructions: React.FC<InstructionsProps> = ({ volume, beans, bloom }) => 
     return (
         <div>
             <ol>
-                <li>Heat {volume}g water to 207&deg; F</li>
+                <li>Heat at least {volume}g water to 207&deg; F</li>
                 <li>Grind {beans}g beans</li>
                 <li>Bloom coffee with {bloom}g of water</li>
                 <li>Wait 45 seconds</li>
