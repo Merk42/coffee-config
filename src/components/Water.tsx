@@ -1,7 +1,7 @@
 import { ChangeEvent, FC } from 'react'
-import styles from './Forms.module.scss';
+import styles from './Water.module.scss';
 
-interface InputProps {
+interface WaterProps {
   type: 'text' | 'number' | 'email' | 'password' | 'range'
   label: string
   value: string | number
@@ -15,7 +15,7 @@ interface InputProps {
   onChange: (e: ChangeEvent<HTMLInputElement>) => void
 }
 
-const Input: FC<InputProps> = ({
+const Water: FC<WaterProps> = ({
   type,
   label,
   value,
@@ -54,4 +54,4 @@ const Input: FC<InputProps> = ({
   )
 }
 
-export default Input
+export default Water

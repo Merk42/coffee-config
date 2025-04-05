@@ -1,8 +1,10 @@
-import { useMemo, useState } from 'react'
-import Input from './components/Input'
-import './App.css'
+import { useMemo, useState } from 'react';
+import Water from './components/Water';
+import './App.css';
 import Instructions from './components/Instructions';
 import Strength from './components/Strength';
+
+import Favorites from './components/Favorites';
 
 /*
   g to oz
@@ -66,44 +68,43 @@ function App() {
     return Math.round((RAW + Number.EPSILON) * 100) / 100;
   },[beans])
 
+  const volumeRaw = useMemo(() => {
+    const LOSS = volume - bloom;
+    return LOSS;
+  }, [volume, beans])
+
+  const volumeGr = useMemo(() => {
+    return Math.round((volumeRaw + Number.EPSILON) * 100) / 100;
+  },[volumeRaw])
+
   const volumeOz = useMemo(() => {
-    return volume  * .03527396
-  },[volume])
+    const toOz = volumeRaw * .03527396;
+    return Math.round((toOz + Number.EPSILON) * 100) / 100;
+  },[volumeRaw])
 
   return (
-    <>
+    <main>
     
+      <Favorites use_favorite ={handleFavorite} />
 
-      <button onClick={() => {handleFavorite('simple')}}>simple</button>
-      <button onClick={() => {handleFavorite('brown')}}>AB</button>
-
-
-    
-      <Input
-        type="range"
-        label={`ratio (1:${ratio})`}
-        name="ratio"
-        value={ratio}
-        onChange={handleRatioChange}
-        min={14}
-        max={18}
-        step={1}
-      />
-{/* 
       <Strength onChange={handleRatioChange}/>
-*/}
-      <Input
+
+      <Water
         type="number"
-        label={`drink mass (g)`}
-        name="ratio"
+        label={`Water (g)`}
+        name="w"
         value={volume}
         onChange={handleVolumeChange}
         max={800}
       />
 
+{/*
+TODO factor in 'water loss'
+During a Chemex pour-over, for a typical 1:16 coffee-to-water ratio, you'd lose about 16 grams of water for every 1 gram of coffee used, as the water is absorbed into the coffee grounds and filter
+*/}
       <dl>
-        <dt>drink volume (oz)</dt>
-        <dd>{volumeOz}</dd>
+        <dt>approximate brew size</dt>
+        <dd>{volumeOz}oz | {volumeGr}gr</dd>
       </dl>
 
 
@@ -112,7 +113,7 @@ function App() {
        beans={beans}
        bloom={bloom}
       />
-    </>
+    </main>
   )
 }
 

@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import styles from './Instructions.module.scss';
 
 interface InstructionsProps {
     volume: number;
@@ -14,7 +15,8 @@ const Instructions: React.FC<InstructionsProps> = ({ volume, beans, bloom }) => 
     },[volume, bloom])
 
     return (
-        <div>
+        <div className={styles.instructions}>
+            <p>instructions</p>
             <ol>
                 <li>Heat at least {volume}g water to 207&deg; F</li>
                 <li>Grind {beans}g beans</li>
