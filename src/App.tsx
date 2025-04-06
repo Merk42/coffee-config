@@ -3,7 +3,6 @@ import Water from './components/Water';
 import './App.css';
 import Instructions from './components/Instructions';
 import Strength from './components/Strength';
-
 import Favorites from './components/Favorites';
 
 /*
@@ -11,7 +10,7 @@ import Favorites from './components/Favorites';
   g * .03527396
 
   beans
-  volume / ratio
+  water / ratio
 
   bloom
   beans * 2
@@ -26,22 +25,22 @@ function App() {
   }
 
   interface Favorite {
-    volume: number;
+    water: number;
     ratio: number;
   }
 
   const favorites:Favorites ={
     "simple":{
-      volume:224,
+      water:224,
       ratio:16
     },
     "brown":{
-      volume:420,
+      water:420,
       ratio:14
     }
   }
 
-  const [volume, setVolume] = useState(224)
+  const [water, setVolume] = useState(224)
   const [ratio, setRatio] = useState(16)
 
   const handleRatioChange = (event:any) => {
@@ -55,32 +54,32 @@ function App() {
   const handleFavorite = (event:string) => {
     
     setRatio(favorites[event].ratio);
-    setVolume(favorites[event].volume);
+    setVolume(favorites[event].water);
   }
   
   const beans = useMemo(() => {
-    const RAW = volume / ratio;
+    const RAW = water / ratio;
     return Math.round((RAW + Number.EPSILON) * 100) / 100;
-  },[volume, ratio])
+  },[water, ratio])
 
   const bloom = useMemo(() => {
     const RAW = beans * 2;
     return Math.round((RAW + Number.EPSILON) * 100) / 100;
   },[beans])
 
-  const volumeRaw = useMemo(() => {
-    const LOSS = volume - bloom;
+  const brewedRaw = useMemo(() => {
+    const LOSS = water - bloom;
     return LOSS;
-  }, [volume, beans])
+  }, [water, beans])
 
-  const volumeGr = useMemo(() => {
-    return Math.round((volumeRaw + Number.EPSILON) * 100) / 100;
-  },[volumeRaw])
+  const brewedGr = useMemo(() => {
+    return Math.round((brewedRaw + Number.EPSILON) * 100) / 100;
+  },[brewedRaw])
 
-  const volumeOz = useMemo(() => {
-    const toOz = volumeRaw * .03527396;
+  const brewedOz = useMemo(() => {
+    const toOz = brewedRaw * .03527396;
     return Math.round((toOz + Number.EPSILON) * 100) / 100;
-  },[volumeRaw])
+  },[brewedRaw])
 
   return (
     <main>
@@ -93,23 +92,18 @@ function App() {
         type="number"
         label={`Water (g)`}
         name="w"
-        value={volume}
+        value={water}
         onChange={handleVolumeChange}
         max={800}
       />
-
-{/*
-TODO factor in 'water loss'
-During a Chemex pour-over, for a typical 1:16 coffee-to-water ratio, you'd lose about 16 grams of water for every 1 gram of coffee used, as the water is absorbed into the coffee grounds and filter
-*/}
       <dl>
         <dt>approximate brew size</dt>
-        <dd>{volumeOz}oz | {volumeGr}gr</dd>
+        <dd>{brewedOz}oz | {brewedGr}gr</dd>
       </dl>
 
 
       <Instructions
-       volume={volume}
+       water={water}
        beans={beans}
        bloom={bloom}
       />

@@ -2,27 +2,27 @@ import { useMemo } from "react";
 import styles from './Instructions.module.scss';
 
 interface InstructionsProps {
-    volume: number;
+    water: number;
     beans: number;
     bloom: number;
 }
   
-const Instructions: React.FC<InstructionsProps> = ({ volume, beans, bloom }) => {
+const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom }) => {
 
     const remaining = useMemo(() => {
-        const RAW = volume - bloom;
+        const RAW = water - bloom;
         return Math.round((RAW + Number.EPSILON) * 100) / 100;
-    },[volume, bloom])
+    },[water, bloom])
 
     return (
         <div className={styles.instructions}>
             <p>instructions</p>
             <ol>
-                <li>Heat at least {volume}g water to 207&deg; F</li>
+                <li>Heat at least {water}g water to 207&deg; F</li>
                 <li>Grind {beans}g beans</li>
                 <li>Bloom coffee with {bloom}g of water</li>
                 <li>Wait 45 seconds</li>
-                <li>Pour another {remaining}g water, totalling {volume}g</li>
+                <li>Pour another {remaining}g water, totalling {water}g</li>
             </ol>
         </div>
     );
