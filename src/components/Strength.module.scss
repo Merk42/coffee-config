@@ -9,6 +9,7 @@
     gap:.5rem;
     border:none;
     /* --strength: 18%; */
+    justify-content: stretch;
 }
 
 .option {
@@ -17,8 +18,10 @@
     color: var(--color);
     border:1px solid var(--color);
     text-align:center;
-    padding: .25rem;
-    border-radius: .25rem;
+    padding: .5rem;
+    border-radius: .5rem;
+    flex-grow:1;
+
 }
 .option:hover{
     cursor: pointer;
@@ -37,4 +40,23 @@ input[type="radio"] {
     position: absolute;
     white-space: nowrap; 
     width: 1px;
+}
+
+
+
+
+
+.flexContainer {
+    display:flex;
+}
+label,
+input[type="nubmer"] {
+    display: block;
+}
+.toggleButton {
+    margin:0;
+}
+.notes {
+    display:block;
+    font-size: .875rem;
 }

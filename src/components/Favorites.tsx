@@ -7,6 +7,7 @@ interface Favorites {
 interface Favorite {
     volume: number;
     ratio: number;
+    brew: number;
 }
 
 function Favorites(props:any) {
