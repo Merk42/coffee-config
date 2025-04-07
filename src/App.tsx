@@ -4,6 +4,7 @@ import './App.css';
 import Instructions from './components/Instructions';
 import Strength from './components/Strength';
 import Favorites from './components/Favorites';
+import Cups from './components/Cups';
 
 /*
   g to oz
@@ -43,6 +44,8 @@ function App() {
   const [water, setVolume] = useState(224)
   const [ratio, setRatio] = useState(16)
 
+  const [serving, setServing] = useState(0)
+
   const handleRatioChange = (event:any) => {
     setRatio(event.target.value);
   }
@@ -81,12 +84,34 @@ function App() {
     return Math.round((toOz + Number.EPSILON) * 100) / 100;
   },[brewedRaw])
 
+  const calcWater = useMemo(() => {
+    const RAW = serving/(1-(2/ratio))
+    return Math.round((RAW + Number.EPSILON) * 100) / 100;
+  },[serving, ratio])
+
+  const calcBeans = useMemo(() => {
+    const RAW = calcWater / ratio;
+    return Math.round((RAW + Number.EPSILON) * 100) / 100;
+  },[calcWater, ratio])
+
+  const calcBloom = useMemo(() => {
+    const RAW = calcBeans * 2;
+    return Math.round((RAW + Number.EPSILON) * 100) / 100;
+  },[calcBeans])
+
+  const handleServingChange = (event:any) => {
+    setServing(event.target.value);
+  };
+
   return (
     <main>
     
       <Favorites use_favorite ={handleFavorite} />
 
       <Strength onChange={handleRatioChange}/>
+      <Cups onChange={handleServingChange}/>
+
+{/*
 
       <Water
         type="number"
@@ -96,16 +121,22 @@ function App() {
         onChange={handleVolumeChange}
         max={800}
       />
+      */}
+      {/*
       <dl>
         <dt>approximate brew size</dt>
         <dd>{brewedOz}oz | {brewedGr}gr</dd>
       </dl>
-
+      */}
+      {/*
+      {serving}g
+      */}
+      
 
       <Instructions
-       water={water}
-       beans={beans}
-       bloom={bloom}
+       water={calcWater}
+       beans={calcBeans}
+       bloom={calcBloom}
       />
     </main>
   )

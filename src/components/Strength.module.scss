@@ -1,6 +1,9 @@
 .allOptions {
+    /*
     display: grid;
     grid-template-columns: repeat(5, 1fr);
+    */
+    display: flex;
     margin: 0;
     padding: 0;
     gap:.5rem;
@@ -16,6 +19,9 @@
     text-align:center;
     padding: .25rem;
     border-radius: .25rem;
+}
+.option:hover{
+    cursor: pointer;
 }
 input[type="radio"]:checked+.option{
     background-color: var(--color);
