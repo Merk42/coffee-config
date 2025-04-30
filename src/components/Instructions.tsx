@@ -1,5 +1,4 @@
 import { useMemo } from "react";
-import styles from './Instructions.module.scss';
 
 interface InstructionsProps {
     water: number;
