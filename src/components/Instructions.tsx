@@ -15,8 +15,8 @@ const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom }) => {
     },[water, bloom])
 
     return (
-        <div className={styles.instructions}>
-            <p>instructions</p>
+        <div className="mt-8 rounded-md bg-yellow-800 text-white p-8">
+            <h2 className="text-2xl">instructions</h2>
             <ol>
                 <li>Heat at least {water}g water to 207&deg; F</li>
                 <li>Grind {beans}g beans</li>
