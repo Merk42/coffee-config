@@ -15,16 +15,16 @@ function FavoritesButton({ children, onClick,}:ButtonProps) {
     );
   }
 
-function Favorites(props:any) {
-    return (
-        <aside className="fixed bottom-0 p-2">
-            <h2>Favorites</h2>
-            <div className="flex gap-2">
-                <FavoritesButton onClick={() => {props.use_favorite('simple')}}>Simple</FavoritesButton>
-                <FavoritesButton onClick={() => {props.use_favorite('brown')}}>Alton Brown</FavoritesButton>
-            </div>
-        </aside>
-    )
+function Favorites({useFavorite}:{useFavorite:Function}) {
+  return (
+    <aside className="fixed bottom-0 p-2">
+      <h2>Favorites</h2>
+      <div className="flex gap-2">
+        <FavoritesButton onClick={() => {useFavorite('simple')}}>Simple</FavoritesButton>
+        <FavoritesButton onClick={() => {useFavorite('brown')}}>Alton Brown</FavoritesButton>
+      </div>
+    </aside>
+  )
 }
 
 export default Favorites

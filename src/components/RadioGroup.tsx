@@ -22,18 +22,18 @@ function CustomRadioButton({ name, value, label, onChange }:RadioButtonProps) {
 function RadioGroup({ legend, name, options, onChange }:RadioGroupProps) {
   return (
     <fieldset className="mt-4">
-        <legend className="font-bold">{legend}</legend>
-        <div className="flex gap-2">
-        {options.map((option) => (
-            <CustomRadioButton
-            key={option.value}
-            name={name}
-            value={option.value}
-            label={option.label}
-            onChange={onChange}
-            />
-        ))}
-        </div>
+      <legend className="font-bold">{legend}</legend>
+      <div className="flex gap-2">
+      {options.map((option) => (
+          <CustomRadioButton
+          key={option.value}
+          name={name}
+          value={option.value}
+          label={option.label}
+          onChange={onChange}
+          />
+      ))}
+      </div>
     </fieldset>
   );
 }

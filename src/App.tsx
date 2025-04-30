@@ -94,7 +94,7 @@ function App() {
 
   const [ratio, setRatio] = useState(16)
 
-  const [serving, setServing] = useState(0)
+  const [serving, setServing] = useState(170)
 
   const handleRatioChange = (event:any) => {
     setRatio(event.target.value);
@@ -136,7 +136,7 @@ function App() {
   return (
     <main className='max-w-3xl m-auto p-2'>
     
-      <Favorites use_favorite ={handleFavorite} />
+      <Favorites useFavorite={handleFavorite} />
 
       <RadioGroup
         legend="strength"
