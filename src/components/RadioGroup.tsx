@@ -19,7 +19,7 @@ function CustomRadioButton({ name, value, label, onChange }:RadioButtonProps) {
   );
 }
 
-function RadioGroup({ legend, name, options, selectedValue, onChange }:RadioGroupProps) {
+function RadioGroup({ legend, name, options, onChange }:RadioGroupProps) {
   return (
     <fieldset className="mt-4">
         <legend className="font-bold">{legend}</legend>

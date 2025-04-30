@@ -142,7 +142,6 @@ function App() {
         legend="strength"
         name="strength"
         options={strengthOptions}
-        selectedValue={ratio}
         onChange={handleRatioChange}
       />
 
@@ -150,7 +149,6 @@ function App() {
         legend="size"
         name="size"
         options={brewSizeOptions}
-        selectedValue={serving}
         onChange={handleServingChange}
       />
 

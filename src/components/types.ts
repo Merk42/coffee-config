@@ -9,7 +9,6 @@ export interface RadioGroupProps {
     legend: string;
     name: string;
     options: RadioGroupOption[];
-    selectedValue: string|number;
     onChange: ChangeEventHandler<HTMLInputElement>;
 }
 
