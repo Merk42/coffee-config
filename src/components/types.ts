@@ -17,6 +17,5 @@ export interface RadioButtonProps {
     name: string;
     value: string|number;
     label: string;
-    checked: boolean;
     onChange: ChangeEventHandler<HTMLInputElement>;
 }

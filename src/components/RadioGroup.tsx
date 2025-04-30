@@ -1,6 +1,6 @@
 import { RadioButtonProps, RadioGroupProps } from "./types";  
 
-function CustomRadioButton({ name, value, label, checked, onChange }:RadioButtonProps) {
+function CustomRadioButton({ name, value, label, onChange }:RadioButtonProps) {
   return (
     <span className='flex grow'>
         <input
@@ -30,7 +30,6 @@ function RadioGroup({ legend, name, options, selectedValue, onChange }:RadioGrou
             name={name}
             value={option.value}
             label={option.label}
-            checked={selectedValue === option.value}
             onChange={onChange}
             />
         ))}
