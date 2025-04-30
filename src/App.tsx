@@ -1,9 +1,7 @@
 import { useMemo, useState } from 'react';
 import './App.css';
 import Instructions from './components/Instructions';
-import Strength from './components/Strength';
 import Favorites from './components/Favorites';
-import BrewSizes from './components/BrewSizes';
 import RadioGroup from './components/RadioGroup';
 
 import { RadioGroupOption } from './components/types';
