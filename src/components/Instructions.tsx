@@ -15,8 +15,8 @@ const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom }) => {
 
     return (
         <div className="mt-8 rounded-md bg-yellow-800 text-white p-8">
-            <h2 className="text-2xl">instructions</h2>
-            <ol>
+            <h2 className="text-2xl capitalize">instructions</h2>
+            <ol className="list-decimal">
                 <li>Heat at least {water}g water to 207&deg; F</li>
                 <li>Grind {beans}g beans</li>
                 <li>Bloom coffee with {bloom}g of water</li>
