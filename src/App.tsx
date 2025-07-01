@@ -99,8 +99,7 @@ function App() {
     setRatio(event.target.value);
   }
 
-  const handleFavorite = (event:string) => {
-    
+  const handleFavorite = (event:string) => {   
     setRatio(favorites[event].ratio);
     setServing(favorites[event].brew);
   }
@@ -181,7 +180,7 @@ function App() {
        water={calcWater}
        beans={calcBeans}
        bloom={calcBloom}
-       isIced={!!iced}
+       isIced={!!Number(iced)}
       />
     </main>
   )
