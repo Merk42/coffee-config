@@ -6,19 +6,16 @@ import RadioGroup from './components/RadioGroup';
 
 import { RadioGroupOption } from './components/types';
 
-/*
-  g to oz
-  g * .03527396
-
-  beans
-  water / ratio
-
-  bloom
-  beans * 2
-
-
-  hsl(19deg, 71.6%, 14%)
-*/
+const styleOptions:RadioGroupOption[] = [
+  {
+    label:'hot',
+    value:0
+  },
+  {
+    label:'iced',
+    value:1
+  }
+]
 
 const brewSizeOptions:RadioGroupOption[] = [
   {
@@ -96,6 +93,8 @@ function App() {
 
   const [serving, setServing] = useState(170)
 
+  const [iced, setIced] = useState(0)
+
   const handleRatioChange = (event:any) => {
     setRatio(event.target.value);
   }
@@ -106,6 +105,9 @@ function App() {
     setServing(favorites[event].brew);
   }
   
+  const handleStyleChange = (event:any) => {
+    setIced(event.target.value);
+  }
 
 
 
@@ -139,6 +141,15 @@ function App() {
       <Favorites useFavorite={handleFavorite} />
 
       <RadioGroup
+        selectedvalue={iced}
+        legend="style"
+        name="style"
+        options={styleOptions}
+        onChange={handleStyleChange}
+      />
+
+      <RadioGroup
+        selectedvalue={ratio}
         legend="strength"
         name="strength"
         options={strengthOptions}
@@ -146,6 +157,7 @@ function App() {
       />
 
       <RadioGroup
+        selectedvalue={serving}
         legend="size"
         name="size"
         options={brewSizeOptions}
@@ -165,11 +177,11 @@ function App() {
           onChange={handleServingChange}/>
           <span>({gToOz}oz)</span>
       </div>
-
       <Instructions
        water={calcWater}
        beans={calcBeans}
        bloom={calcBloom}
+       isIced={!!iced}
       />
     </main>
   )

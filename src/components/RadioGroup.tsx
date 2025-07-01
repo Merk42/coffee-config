@@ -1,6 +1,6 @@
 import { RadioButtonProps, RadioGroupProps } from "./types";  
 
-function CustomRadioButton({ name, value, label, onChange }:RadioButtonProps) {
+function CustomRadioButton({ name, value, label, selectedvalue, onChange }:RadioButtonProps) {
   return (
     <span className='flex grow'>
         <input
@@ -9,6 +9,7 @@ function CustomRadioButton({ name, value, label, onChange }:RadioButtonProps) {
             type="radio"
             name={name}
             value={value}
+            checked={selectedvalue.toString() === value.toString()}
             onChange={onChange}/>
         <label
             className="cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md peer-checked:bg-yellow-800 peer-checked:text-white"
@@ -19,7 +20,7 @@ function CustomRadioButton({ name, value, label, onChange }:RadioButtonProps) {
   );
 }
 
-function RadioGroup({ legend, name, options, onChange }:RadioGroupProps) {
+function RadioGroup({ legend, name, options, selectedvalue, onChange }:RadioGroupProps) {
   return (
     <fieldset className="mt-4">
       <legend className="font-bold">{legend}</legend>
@@ -30,6 +31,7 @@ function RadioGroup({ legend, name, options, onChange }:RadioGroupProps) {
           name={name}
           value={option.value}
           label={option.label}
+          selectedvalue={selectedvalue}
           onChange={onChange}
           />
       ))}
