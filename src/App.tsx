@@ -102,6 +102,7 @@ function App() {
   const handleFavorite = (event:string) => {   
     setRatio(favorites[event].ratio);
     setServing(favorites[event].brew);
+    setIced(0)
   }
   
   const handleStyleChange = (event:any) => {
@@ -116,9 +117,10 @@ function App() {
   },[serving, ratio])
 
   const calcBeans = useMemo(() => {
+    const ICEDBEANS = !!Number(iced) ? 5 : 0;
     const RAW = calcWater / ratio;
-    return Math.round((RAW + Number.EPSILON) * 100) / 100;
-  },[calcWater, ratio])
+    return (Math.round((RAW + Number.EPSILON) * 100) / 100) + ICEDBEANS;
+  },[calcWater, ratio, iced])
 
   const calcBloom = useMemo(() => {
     const RAW = calcBeans * 2;

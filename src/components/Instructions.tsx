@@ -21,19 +21,12 @@ const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom, isIced
         return Math.round((RAW + Number.EPSILON) * 100) / 100;
     },[water, bloom, ice])
 
-    const Cbeans = useMemo(() => {
-        if (!isIced) {
-            return beans
-        }
-        return beans + 5;
-    }, [beans, isIced])
-
     return (
         <div className="mt-8 rounded-md bg-yellow-800 text-white p-8">
             <h2 className="text-2xl capitalize">instructions</h2>
             <ol className="list-decimal">
                 <li>Heat at least {water}g water to 207&deg; F</li>
-                <li>Grind {Cbeans}g beans</li>
+                <li>Grind {beans}g beans</li>
                 { isIced && 
                     <li>Fill carafe with {ice}g ice</li>
                 }
