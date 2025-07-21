@@ -18,5 +18,6 @@ export interface RadioButtonProps {
     value: string|number;
     label: string;
     selectedvalue: string|number;
+    legend: string;
     onChange: ChangeEventHandler<HTMLInputElement>;
 }

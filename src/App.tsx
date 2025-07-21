@@ -6,6 +6,21 @@ import RadioGroup from './components/RadioGroup';
 
 import { RadioGroupOption } from './components/types';
 
+const roastOptions:RadioGroupOption[] = [
+  {
+    label:'light',
+    value:1
+  },
+  {
+    label:'medium',
+    value:2
+  },
+  {
+    label:'dark',
+    value:3
+  }
+]
+
 const styleOptions:RadioGroupOption[] = [
   {
     label:'hot',
@@ -89,11 +104,17 @@ function App() {
     }
   }
 
-  const [ratio, setRatio] = useState(16)
+  const [roast, setRoast] = useState(3);
 
-  const [serving, setServing] = useState(170)
+  const [ratio, setRatio] = useState(16);
 
-  const [iced, setIced] = useState(0)
+  const [serving, setServing] = useState(170);
+
+  const [iced, setIced] = useState(0);
+  
+  const handleRoastChange = (event:any) => {
+    setRoast(event.target.value);
+  }
 
   const handleRatioChange = (event:any) => {
     setRatio(event.target.value);
@@ -102,7 +123,8 @@ function App() {
   const handleFavorite = (event:string) => {   
     setRatio(favorites[event].ratio);
     setServing(favorites[event].brew);
-    setIced(0)
+    setIced(0);
+    setRoast(3);
   }
   
   const handleStyleChange = (event:any) => {
@@ -150,6 +172,14 @@ function App() {
       />
 
       <RadioGroup
+        selectedvalue={roast}
+        legend="roast"
+        name="roast"
+        options={roastOptions}
+        onChange={handleRoastChange}
+      />
+
+      <RadioGroup
         selectedvalue={ratio}
         legend="strength"
         name="strength"
@@ -183,6 +213,7 @@ function App() {
        beans={calcBeans}
        bloom={calcBloom}
        isIced={!!Number(iced)}
+       roast={roast}
       />
     </main>
   )

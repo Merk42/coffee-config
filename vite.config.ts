@@ -44,8 +44,8 @@ export default defineConfig({
       theme_color:'#894b00',
       background_color:'#fff',
       display:"standalone",
-      scope:'/',
-      start_url:"/",
+      scope:'/etc/coffee-config',
+      start_url:"/etc/coffee-config/index.html",
       orientation:'portrait'
       }
     }) 

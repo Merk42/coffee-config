@@ -5,9 +5,10 @@ interface InstructionsProps {
     beans: number;
     bloom: number;
     isIced: boolean;
+    roast: number;
 }
   
-const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom, isIced }) => {
+const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom, isIced, roast }) => {
 
     const ice = useMemo(() => {
         if (!isIced) {
@@ -21,11 +22,15 @@ const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom, isIced
         return Math.round((RAW + Number.EPSILON) * 100) / 100;
     },[water, bloom, ice])
 
+    const temperature = useMemo(() => {
+        return roast * 5 + 190
+    }, [roast])
+
     return (
         <div className="mt-8 rounded-md bg-yellow-800 text-white p-8">
             <h2 className="text-2xl capitalize">instructions</h2>
             <ol className="list-decimal">
-                <li>Heat at least {water}g water to 207&deg; F</li>
+                <li>Heat at least {water}g water to {temperature}&deg; F</li>
                 <li>Grind {beans}g beans</li>
                 { isIced && 
                     <li>Fill carafe with {ice}g ice</li>
