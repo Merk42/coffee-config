@@ -9,7 +9,7 @@ import { RadioGroupOption } from './components/types';
 const roastOptions:RadioGroupOption[] = [
   {
     label:'light',
-    value:1
+    value:3
   },
   {
     label:'medium',
@@ -17,7 +17,7 @@ const roastOptions:RadioGroupOption[] = [
   },
   {
     label:'dark',
-    value:3
+    value:1
   }
 ]
 
@@ -124,7 +124,7 @@ function App() {
     setRatio(favorites[event].ratio);
     setServing(favorites[event].brew);
     setIced(0);
-    setRoast(3);
+    setRoast(1);
   }
   
   const handleStyleChange = (event:any) => {
