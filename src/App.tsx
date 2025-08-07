@@ -112,12 +112,12 @@ function App() {
 
   const [iced, setIced] = useState(0);
   
-  const handleRoastChange = (event:any) => {
-    setRoast(event.target.value);
+  const handleRoastChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setRoast(Number(event.target.value));
   }
 
-  const handleRatioChange = (event:any) => {
-    setRatio(event.target.value);
+  const handleRatioChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setRatio(Number(event.target.value));
   }
 
   const handleFavorite = (event:string) => {   
@@ -127,8 +127,8 @@ function App() {
     setRoast(1);
   }
   
-  const handleStyleChange = (event:any) => {
-    setIced(event.target.value);
+  const handleStyleChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setIced(Number(event.target.value));
   }
 
 
@@ -139,7 +139,7 @@ function App() {
   },[serving, ratio])
 
   const calcBeans = useMemo(() => {
-    const ICEDBEANS = !!Number(iced) ? 5 : 0;
+    const ICEDBEANS = Number(iced) ? 5 : 0;
     const RAW = calcWater / ratio;
     return (Math.round((RAW + Number.EPSILON) * 100) / 100) + ICEDBEANS;
   },[calcWater, ratio, iced])
@@ -149,8 +149,8 @@ function App() {
     return Math.round((RAW + Number.EPSILON) * 100) / 100;
   },[calcBeans])
 
-  const handleServingChange = (event:any) => {
-    setServing(event.target.value);
+  const handleServingChange = (event:React.ChangeEvent<HTMLInputElement>) => {
+    setServing(Number(event.target.value));
   };
 
   const gToOz = useMemo(() => {

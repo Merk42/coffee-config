@@ -17,28 +17,28 @@ export default defineConfig({
         short_name:"Coffee",
         description:"Tool for pour over coffee",
         icons:[{
-          src: '/android-chrome-192x192.png',
+          src: '/etc/coffee-config/android-chrome-192x192.png',
           sizes:'192x192',
           type:'image/png',
-          purpose:'favicon'
+          purpose:'maskable'
         },
         {
-          src:'/android-chrome-512x512.png',
+          src:'/etc/coffee-config/android-chrome-512x512.png',
           sizes:'512x512',
           type:'image/png',
-          purpose:'favicon'
+          purpose:'maskable'
         },
         {
-          src: '/apple-touch-icon.png',
+          src:'/etc/coffee-config/monochrome.png',
+          sizes:'512x512',
+          type:'image/png',
+          purpose:'monochrome maskable'
+        },
+        {
+          src: '/etc/coffee-config/apple-touch-icon.png',
           sizes:'180x180',
           type:'image/png',
-          purpose:'apple touch icon',
-        },
-        {
-          src: '/maskable_icon.png',
-          sizes:'512x512',
-          type:'image/png',
-          purpose:'any maskable',
+          purpose:'any',
         }
       ],
       theme_color:'#894b00',
