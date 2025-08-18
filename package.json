@@ -13,6 +13,7 @@
     "@tailwindcss/vite": "^4.1.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-screen-wake-lock": "^3.1.1",
     "tailwindcss": "^4.1.5",
     "vite-plugin-pwa": "^1.0.0"
   },

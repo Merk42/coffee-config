@@ -1,4 +1,6 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+import Dialog from './Dialog';
+import Timer from './Timer';
 
 interface InstructionsProps {
     water: number;
@@ -26,6 +28,11 @@ const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom, isIced
         return roast * 5 + 190
     }, [roast])
 
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const openModal = () => setIsModalOpen(true);
+    const closeModal = () => setIsModalOpen(false);
+
     return (
         <div className="mt-8 rounded-md bg-yellow-800 text-white p-8">
             <h2 className="text-2xl capitalize">instructions</h2>
@@ -36,9 +43,12 @@ const Instructions: React.FC<InstructionsProps> = ({ water, beans, bloom, isIced
                     <li>Fill carafe with {ice}g ice</li>
                 }
                 <li>Bloom coffee with {bloom}g of water</li>
-                <li>Wait 45 seconds</li>
+                <li>Wait <button className="cursor-pointer underline" onClick={openModal}>45 seconds</button></li>
                 <li>Pour another {remaining}g water, totalling {water}g</li>
-            </ol>
+            </ol> 
+            <Dialog isOpen={isModalOpen} onClose={closeModal}>
+                <Timer />
+            </Dialog>
         </div>
     );
 };
