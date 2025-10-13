@@ -50,7 +50,7 @@ function Timer() {
 
   return (
     <div className="text-center">
-      <div className="text-6xl">{remainingSeconds}</div>
+      <div className="text-6xl w-[3ch]">{remainingSeconds}</div>
       {status === "stopped" && (
         <button
           className="cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md"

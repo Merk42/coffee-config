@@ -27,7 +27,7 @@ function Dialog({ children, onClose, isOpen }:TimerProps) {
 
 
     return (
-    <dialog onCancel={handleCancel} className='m-auto p-0 backdrop:bg-opacity-50 open:animate-fade-inmt-8 rounded-xl bg-white p-6 shadow-3xl backdrop:bg-black/50 backdrop:backdrop-blur-md' ref={dialogRef}>
+    <dialog onCancel={handleCancel} className='m-auto p-0 backdrop:bg-opacity-50 open:animate-fade-inmt-8 rounded-xl bg-white dark:bg-gray-800 p-6 shadow-3xl backdrop:bg-black/50 backdrop:backdrop-blur-md' ref={dialogRef}>
       <button className='cursor-pointer' onClick={onClose} aria-label='close'>X</button>
       {children}
       
