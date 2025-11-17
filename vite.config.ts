@@ -50,6 +50,6 @@ export default defineConfig({
       }
     }) 
   ],
-  base: './'
+  base: '/pwa/coffee-config/'
 })
 
