@@ -5,6 +5,7 @@ import Favorites from './components/Favorites';
 import RadioGroup from './components/RadioGroup';
 
 import { RadioGroupOption } from './components/types';
+import Serving from './components/Serving';
 
 const roastOptions:RadioGroupOption[] = [
   {
@@ -92,6 +93,11 @@ function App() {
   }
 
   const favorites:Favorites ={
+    "daily":{
+      water:224,
+      ratio:16,
+      brew: 196
+    },
     "simple":{
       water:224,
       ratio:16,
@@ -187,27 +193,12 @@ function App() {
         onChange={handleRatioChange}
       />
 
-      <RadioGroup
-        selectedvalue={serving}
-        legend="size"
-        name="size"
-        options={brewSizeOptions}
-        onChange={handleServingChange}
-      />
+      <Serving onChange={handleServingChange} value={serving} options={brewSizeOptions}/>
 
-
-      <div className='flex mt-4 gap-1'>
-        <label
-          className='font-bold'
-          htmlFor='finetune'>Tweak serving size (g)</label>
-        <input
-          className='w-24 border-yellow-800 border-2'
-          id='finetune'
-          type='number'
-          value={serving}
-          onChange={handleServingChange}/>
-          <span>({gToOz}oz)</span>
+      <div className='font-bold text-2xl'>
+        {serving}g / {gToOz}oz
       </div>
+
       <Instructions
        water={calcWater}
        beans={calcBeans}

@@ -1,8 +1,8 @@
 import { useRef, useEffect } from 'react';
 
 interface TimerProps {
-    children: any;
-    onClose: any;
+    children: React.ReactNode;
+    onClose: () => void;
     isOpen: boolean;
 }
   
