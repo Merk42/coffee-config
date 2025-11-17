@@ -1,3 +1,5 @@
+import { FavoritesInterface } from "./types";
+
 interface ButtonProps {
     children: React.ReactNode;
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
@@ -15,13 +17,14 @@ function FavoritesButton({ children, onClick,}:ButtonProps) {
     );
   }
 
-function Favorites({useFavorite}:{useFavorite:Function}) {
+function Favorites({updateFavorite, favorites}:{updateFavorite:Function, favorites:FavoritesInterface}) {
   return (
     <aside className="fixed w-full max-w-3xl bottom-0 p-2 bg-white dark:bg-black">
       <h2>Favorites</h2>
       <div className="inline-flex gap-2">
-        <FavoritesButton onClick={() => {useFavorite('simple')}}>Simple</FavoritesButton>
-        <FavoritesButton onClick={() => {useFavorite('brown')}}>Alton Brown</FavoritesButton>
+      {Object.entries(favorites).map(([key, value]) => (
+        <FavoritesButton key={key} onClick={() => {updateFavorite(key)}}>{value.label}</FavoritesButton>
+      ))}
       </div>
     </aside>
   )

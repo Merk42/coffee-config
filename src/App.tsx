@@ -4,7 +4,7 @@ import Instructions from './components/Instructions';
 import Favorites from './components/Favorites';
 import RadioGroup from './components/RadioGroup';
 
-import { RadioGroupOption } from './components/types';
+import { FavoritesInterface, RadioGroupOption } from './components/types';
 import Serving from './components/Serving';
 
 const roastOptions:RadioGroupOption[] = [
@@ -82,28 +82,21 @@ const strengthOptions:RadioGroupOption[] = [
 
 function App() {
 
-  interface Favorites {
-    [key:string]: Favorite;
-  }
-
-  interface Favorite {
-    water: number;
-    ratio: number;
-    brew: number;
-  }
-
-  const favorites:Favorites ={
+  const favorites:FavoritesInterface ={
     "daily":{
-      water:224,
+      label:"daily",
+      water:280,
       ratio:16,
-      brew: 196
+      brew: 245
     },
     "simple":{
+      label:"simple",
       water:224,
       ratio:16,
       brew: 196
     },
     "brown":{
+      label:"Alton Brown",
       water:420,
       ratio:14,
       brew: 360
@@ -167,7 +160,7 @@ function App() {
   return (
     <main className='max-w-3xl m-auto p-2'>
     
-      <Favorites useFavorite={handleFavorite} />
+      <Favorites updateFavorite={handleFavorite} favorites={favorites} />
 
       <RadioGroup
         selectedvalue={iced}

@@ -21,3 +21,14 @@ export interface RadioButtonProps {
     legend: string;
     onChange: ChangeEventHandler<HTMLInputElement>;
 }
+
+export interface FavoritesInterface {
+    [key:string]: Favorite;
+}
+
+export interface Favorite {
+    label: string;
+    water: number;
+    ratio: number;
+    brew: number;
+}
