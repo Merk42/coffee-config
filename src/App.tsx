@@ -152,6 +152,10 @@ function App() {
     setServing(Number(event.target.value));
   };
 
+  const handleServingTweak = (value:number) => {
+    setServing(value);
+  };
+
   const gToOz = useMemo(() => {
     const RAW = serving * .03527396;
     return Math.round((RAW + Number.EPSILON) * 100) / 100;
@@ -186,9 +190,9 @@ function App() {
         onChange={handleRatioChange}
       />
 
-      <Serving onChange={handleServingChange} value={serving} options={brewSizeOptions}/>
+      <Serving onChange={handleServingChange} value={serving} options={brewSizeOptions} tweak={handleServingTweak}/>
 
-      <div className='font-bold text-2xl'>
+      <div className='font-bold text-4xl'>
         {serving}g / {gToOz}oz
       </div>
 

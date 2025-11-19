@@ -5,9 +5,10 @@ interface ServingType {
     options: RadioGroupOption[];
     value: string|number;
     onChange: ChangeEventHandler<HTMLInputElement>;
+    tweak: (...args: [number]) => void;
 }
 
-function Serving({value, onChange, options}:ServingType) {
+function Serving({value, onChange, options, tweak}:ServingType) {
 
     const MAX = 700;
 
@@ -26,16 +27,18 @@ function Serving({value, onChange, options}:ServingType) {
             <label htmlFor='size' className="font-bold">size</label>
             <div className='flex gap-4'>
                 <div className='flex-auto'>
-                    <input id='size' className="w-full accent-yellow-800" type="range" min={0} max={700} list="rangeOptions" value={value} onChange={onChange}/>
+                    <input id='size' className="w-full accent-yellow-800" type="range" min={0} max={MAX} list="rangeOptions" value={value} onChange={onChange}/>
                     <datalist className="relative block" id="rangeOptions">
                         {optionWidth.map((option) => (
-                            <option style={{ left: `${option.left}%` }} className="absolute -translate-x-1/2" value={option.value} label={option.label}></option>
+                            <option style={{ left: `${option.left}%` }} className="absolute -translate-x-1/2 text-sm" value={option.value} label={option.label}>
+                                <button>???</button>
+                            </option>
                         ))}
                     </datalist>
                 </div>
-                <div className='flex-none flex gap-2 hidden'>
-                    <button className='cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md peer-checked:bg-yellow-800 peer-checked:text-white'>-</button>
-                    <button className='cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md peer-checked:bg-yellow-800 peer-checked:text-white'>+</button>
+                <div className='flex-none flex gap-2'>
+                    <button onClick={() => tweak(Number(value)-1)} disabled={value === 0} className='w-12 cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md peer-checked:bg-yellow-800 peer-checked:text-white'>-</button>
+                    <button onClick={() => tweak(Number(value)+1)} disabled={value === MAX} className='w-12 cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md peer-checked:bg-yellow-800 peer-checked:text-white'>+</button>
                 </div>
             </div>
             
