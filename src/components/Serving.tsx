@@ -31,7 +31,6 @@ function Serving({value, onChange, options, tweak}:ServingType) {
                     <datalist className="relative block" id="rangeOptions">
                         {optionWidth.map((option) => (
                             <option style={{ left: `${option.left}%` }} className="absolute -translate-x-1/2 text-sm" value={option.value} label={option.label}>
-                                <button>???</button>
                             </option>
                         ))}
                     </datalist>
