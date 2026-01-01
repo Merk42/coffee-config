@@ -5,6 +5,8 @@ interface ButtonProps {
     onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
+type UpdateFavoriteFunction = (event: string) => void;
+
 function FavoritesButton({ children, onClick,}:ButtonProps) {
     return (
       <button
@@ -17,7 +19,7 @@ function FavoritesButton({ children, onClick,}:ButtonProps) {
     );
   }
 
-function Favorites({updateFavorite, favorites}:{updateFavorite:Function, favorites:FavoritesInterface}) {
+function Favorites({updateFavorite, favorites}:{updateFavorite:UpdateFavoriteFunction, favorites:FavoritesInterface}) {
   return (
     <aside className="fixed w-full max-w-3xl bottom-0 p-2 bg-white dark:bg-black">
       <h2>Favorites</h2>
