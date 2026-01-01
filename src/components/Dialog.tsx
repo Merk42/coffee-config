@@ -20,7 +20,7 @@ function Dialog({ children, onClose, isOpen }:TimerProps) {
   }, [isOpen]);
 
   // Handle escape key closing the dialog and syncing state
-  const handleCancel = (event:any) => {
+  const handleCancel = (event: React.SyntheticEvent<HTMLDialogElement>) => {
     event.preventDefault(); // Prevent default dialog behavior of closing on escape
     onClose();
   };
