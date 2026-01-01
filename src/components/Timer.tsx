@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useWakeLock } from 'react-screen-wake-lock';
 import { BUTTON_BASE } from "./styling";
-
+import boopSfx from '../../public/beep-beep-beep-beep-80262.mp3'
 function Timer() {
   const DEFAULT_TIMER = 45000;
   const [timer, setTimer] = useState(DEFAULT_TIMER);
@@ -21,6 +21,8 @@ function Timer() {
         }
         if (prevTime === 0) {
         /* alarm */
+          // Instantiate a new audio object and call play()
+          new Audio(boopSfx).play();
           clearInterval(timerInterval);
           release();
           return 0;
