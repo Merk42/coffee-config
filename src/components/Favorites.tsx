@@ -1,4 +1,5 @@
 import { FavoritesInterface } from "./types";
+import { BUTTON_BASE } from "./styling";
 
 interface ButtonProps {
     children: React.ReactNode;
@@ -11,7 +12,7 @@ function FavoritesButton({ children, onClick,}:ButtonProps) {
     return (
       <button
         type="button"
-        className="cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md peer-checked:bg-yellow-800 peer-checked:text-white"
+        className={BUTTON_BASE}
         onClick={onClick}
       >
         {children}

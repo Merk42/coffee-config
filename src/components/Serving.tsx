@@ -1,5 +1,6 @@
 import { ChangeEventHandler, useMemo } from 'react';
 import { RadioGroupOption } from "./types";
+import { BUTTON_BASE } from './styling';
 
 interface ServingType {
     options: RadioGroupOption[];
@@ -36,8 +37,8 @@ function Serving({value, onChange, options, tweak}:ServingType) {
                     </datalist>
                 </div>
                 <div className='flex-none flex gap-2'>
-                    <button onClick={() => tweak(Number(value)-1)} disabled={value === 0} className='w-12 cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md peer-checked:bg-yellow-800 peer-checked:text-white'>-</button>
-                    <button onClick={() => tweak(Number(value)+1)} disabled={value === MAX} className='w-12 cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md peer-checked:bg-yellow-800 peer-checked:text-white'>+</button>
+                    <button onClick={() => tweak(Number(value)-1)} disabled={value === 0} className={'w-12 ' + BUTTON_BASE}>-</button>
+                    <button onClick={() => tweak(Number(value)+1)} disabled={value === MAX} className={'w-12 ' + BUTTON_BASE}>+</button>
                 </div>
             </div>
             

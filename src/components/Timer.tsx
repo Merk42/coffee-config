@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useWakeLock } from 'react-screen-wake-lock';
+import { BUTTON_BASE } from "./styling";
 
 function Timer() {
   const DEFAULT_TIMER = 45000;
@@ -53,7 +54,7 @@ function Timer() {
       <div className="text-6xl w-[3ch]">{remainingSeconds}</div>
       {status === "stopped" && (
         <button
-          className="cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md"
+          className={BUTTON_BASE}
           onClick={handlePlayClick}
         >
           play
@@ -61,7 +62,7 @@ function Timer() {
       )}
       {status === "playing" && (
         <button
-          className="cursor-pointer grow text-center border-yellow-800 border-2 p-2 rounded-md"
+          className={BUTTON_BASE}
           onClick={handleStopClick}
         >
           stop
