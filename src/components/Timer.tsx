@@ -51,7 +51,7 @@ function Timer() {
 
   return (
     <div className="text-center">
-      <div className="text-6xl w-[3ch]">{remainingSeconds}</div>
+      <div className="text-6xl w-[3ch] m-8">{remainingSeconds}</div>
       {status === "stopped" && (
         <button
           className={BUTTON_BASE}
@@ -65,7 +65,7 @@ function Timer() {
           className={BUTTON_BASE}
           onClick={handleStopClick}
         >
-          stop
+          reset
         </button>
       )}
     </div>
