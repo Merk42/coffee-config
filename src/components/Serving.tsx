@@ -29,7 +29,7 @@ function Serving({value, onChange, options, tweak}:ServingType) {
             <div className='flex gap-4'>
                 <div className='flex-auto'>
                     <input id='size' className="w-full accent-yellow-800" type="range" min={0} max={MAX} list="rangeOptions" value={value} onChange={onChange}/>
-                    <datalist className="relative block" id="rangeOptions">
+                    <datalist className="relative block mx-2" id="rangeOptions">
                         {optionWidth.map((option) => (
                             <option style={{ left: `${option.left}%` }} className="absolute -translate-x-1/2 text-sm" value={option.value} label={option.label}>
                             </option>

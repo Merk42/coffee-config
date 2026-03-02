@@ -52,7 +52,7 @@ const brewSizeOptions:RadioGroupOption[] = [
   },
   {
     label:'20oz',
-    value:577
+    value:567
   }
 ]
 
